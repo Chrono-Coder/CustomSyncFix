@@ -1,0 +1,5 @@
+id=CustomSyncFix
+name=Custom Sync Fix
+description=Reduces player rubber-banding and vehicle desync in Build 42 multiplayer. Adds supplemental position sync with smooth client-side interpolation for remote players and vehicles.
+tags=Build 42;Multiplayer
+versionMin=42.0

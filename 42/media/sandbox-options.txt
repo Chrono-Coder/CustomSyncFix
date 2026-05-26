@@ -1,0 +1,67 @@
+VERSION = 1,
+
+option CustomSyncFix.UpdateInterval
+{
+    type = integer,
+    default = 30,
+    min = 10,
+    max = 300,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_UpdateInterval,
+}
+
+option CustomSyncFix.SyncDistance
+{
+    type = integer,
+    default = 100,
+    min = 20,
+    max = 500,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_SyncDistance,
+}
+
+option CustomSyncFix.PlayerInterpSpeed
+{
+    type = double,
+    default = 0.35,
+    min = 0.05,
+    max = 1.0,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_PlayerInterpSpeed,
+}
+
+option CustomSyncFix.VehicleInterpSpeed
+{
+    type = double,
+    default = 0.4,
+    min = 0.05,
+    max = 1.0,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_VehicleInterpSpeed,
+}
+
+option CustomSyncFix.SyncZombies
+{
+    type = boolean,
+    default = true,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_SyncZombies,
+}
+
+option CustomSyncFix.MaxZombies
+{
+    type = integer,
+    default = 150,
+    min = 10,
+    max = 500,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_MaxZombies,
+}
+
+option CustomSyncFix.DebugMode
+{
+    type = boolean,
+    default = false,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_DebugMode,
+}

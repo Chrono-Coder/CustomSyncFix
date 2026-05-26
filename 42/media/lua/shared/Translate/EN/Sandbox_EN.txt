@@ -1,0 +1,24 @@
+Sandbox_EN = {
+    Sandbox_CustomSyncFix = "Custom Sync Fix",
+
+    Sandbox_CustomSyncFix_UpdateInterval = "Sync Interval (ticks)",
+    Sandbox_CustomSyncFix_UpdateInterval_tooltip = "How many game ticks between each sync broadcast. Lower = more responsive but more network traffic. 30 ticks is roughly 1 second.",
+
+    Sandbox_CustomSyncFix_SyncDistance = "Sync Distance (squares)",
+    Sandbox_CustomSyncFix_SyncDistance_tooltip = "Maximum distance in map squares to sync entities. Entities beyond this range are not synced.",
+
+    Sandbox_CustomSyncFix_PlayerInterpSpeed = "Player Interpolation Speed",
+    Sandbox_CustomSyncFix_PlayerInterpSpeed_tooltip = "How fast remote players interpolate toward their synced position. Lower = smoother but laggier, higher = snappier but may jitter. 0.35 is a good default.",
+
+    Sandbox_CustomSyncFix_VehicleInterpSpeed = "Vehicle Interpolation Speed",
+    Sandbox_CustomSyncFix_VehicleInterpSpeed_tooltip = "How fast remote vehicles interpolate toward their synced position. 0.4 is a good default.",
+
+    Sandbox_CustomSyncFix_SyncZombies = "Sync Zombies",
+    Sandbox_CustomSyncFix_SyncZombies_tooltip = "Enable supplemental zombie position sync. Disable if the base game sync is sufficient or to reduce server load.",
+
+    Sandbox_CustomSyncFix_MaxZombies = "Max Zombies Per Sync",
+    Sandbox_CustomSyncFix_MaxZombies_tooltip = "Maximum number of zombies to include per sync update. Nearest zombies are prioritized.",
+
+    Sandbox_CustomSyncFix_DebugMode = "Debug Logging",
+    Sandbox_CustomSyncFix_DebugMode_tooltip = "Print sync debug info to the console. Useful for troubleshooting, but generates a lot of log output.",
+}
