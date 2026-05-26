@@ -1,7 +1,6 @@
 require "CustomSyncFix_shared"
 
 local tickCounter = 0
-local lastPlayerStates = {}
 local lastZombieStates = {}
 
 local function loadSettings()
@@ -40,37 +39,6 @@ local function nearAnyPlayer(x, y, positions)
         end
     end
     return false
-end
-
-local function syncPlayers(players, positions)
-    local data = {}
-    for i = 0, players:size() - 1 do
-        local p = players:get(i)
-        if p then
-            local id = p:getOnlineID()
-            local x, y, z = p:getX(), p:getY(), p:getZ()
-            local dir = p:getDirectionAngle()
-            local inVehicle = p:getVehicle() ~= nil
-
-            local state = { x = x, y = y, z = z, dir = dir }
-            if stateChanged(state, lastPlayerStates[id], CSF.PLAYER_DELTA_EPSILON) then
-                data[#data + 1] = {
-                    id = id,
-                    x = x, y = y, z = z,
-                    dir = dir,
-                    iv = inVehicle,
-                }
-                lastPlayerStates[id] = state
-            end
-        end
-    end
-
-    if #data > 0 then
-        sendServerCommand(CSF.MOD_ID, CSF.CMD_SYNC_PLAYERS, data)
-        if CSF.DEBUG then
-            print("[CSF] Sent player sync: " .. #data .. " players")
-        end
-    end
 end
 
 local function syncZombies(positions)
@@ -138,16 +106,6 @@ local function syncZombies(positions)
 end
 
 local function cleanupCaches()
-    local players = getOnlinePlayers()
-    local activeIds = {}
-    for i = 0, players:size() - 1 do
-        local p = players:get(i)
-        if p then activeIds[p:getOnlineID()] = true end
-    end
-    for id in pairs(lastPlayerStates) do
-        if not activeIds[id] then lastPlayerStates[id] = nil end
-    end
-
     local cell = getCell()
     if not cell then return end
 
@@ -177,14 +135,12 @@ local function onTick()
     if players:size() < 2 then return end
 
     local positions = buildPlayerPositions(players)
-
-    syncPlayers(players, positions)
     syncZombies(positions)
 end
 
 local function onInit()
     loadSettings()
-    print("[CSF] Custom Sync Fix server loaded (interval=" .. CSF.UPDATE_INTERVAL .. ", dist=" .. CSF.SYNC_DISTANCE .. ")")
+    print("[CSF] Custom Sync Fix server loaded - zombie sync only (interval=" .. CSF.UPDATE_INTERVAL .. ", dist=" .. CSF.SYNC_DISTANCE .. ")")
 end
 
 Events.OnInitGlobalModData.Add(onInit)
