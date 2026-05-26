@@ -1,7 +1,7 @@
 @echo off
-echo Installing CustomSyncFix...
-xcopy /E /I /Y "%~dp042" "%USERPROFILE%\Zomboid\mods\CustomSyncFix\42"
+echo Creating CustomSyncFix.zip...
+powershell -Command "Compress-Archive -Path '%~dp042' -DestinationPath '%~dp0CustomSyncFix.zip' -Force"
 echo.
-echo Done! CustomSyncFix installed to %USERPROFILE%\Zomboid\mods\CustomSyncFix
-echo You can now join the server.
+echo Done! CustomSyncFix.zip created.
+echo Extract it to: %%USERPROFILE%%\Zomboid\mods\
 pause
