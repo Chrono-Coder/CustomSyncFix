@@ -18,6 +18,8 @@ local function stateChanged(cur, prev, epsilon)
     local dy = cur.y - prev.y
     if (dx * dx + dy * dy) > epsilon * epsilon then return true end
     if math.abs((cur.dir or 0) - (prev.dir or 0)) > 2.0 then return true end
+    if cur.hp ~= nil and prev.hp ~= nil and math.abs(cur.hp - prev.hp) > 0.05 then return true end
+    if cur.cr ~= prev.cr then return true end
     return false
 end
 
@@ -59,7 +61,9 @@ local function syncZombies(positions)
                 local zz = z:getZ()
                 local dir = z:getDirectionAngle()
 
-                local state = { x = zx, y = zy, z = zz, dir = dir }
+                local hp = z:getHealth()
+                local cr = z:isCrawling()
+                local state = { x = zx, y = zy, z = zz, dir = dir, hp = hp, cr = cr }
                 if stateChanged(state, lastZombieStates[id], CSF.ZOMBIE_DELTA_EPSILON) then
                     local minDist = math.huge
                     for j = 1, #positions do
@@ -70,8 +74,8 @@ local function syncZombies(positions)
                         id = id,
                         x = zx, y = zy, z = zz,
                         dir = dir,
-                        hp = z:getHealth(),
-                        cr = z:isCrawling(),
+                        hp = hp,
+                        cr = cr,
                         dist = minDist,
                     }
                     lastZombieStates[id] = state

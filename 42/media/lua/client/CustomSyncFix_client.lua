@@ -38,7 +38,7 @@ local function applyZombieSync(data)
                 zombie:setHealth(d.hp)
             end
             if d.cr ~= nil then
-                zombie:setCrawling(d.cr)
+                zombie:setCrawler(d.cr)
             end
             if d.hp and d.hp <= 0 then
                 toKill[#toKill + 1] = zombie
@@ -47,7 +47,10 @@ local function applyZombieSync(data)
     end
 
     for i = 1, #toKill do
-        toKill[i]:setDead(true)
+        local z = toKill[i]
+        if not z:isDead() then
+            z:Kill(nil)
+        end
     end
 end
 
