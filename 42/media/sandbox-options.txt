@@ -65,3 +65,21 @@ option CustomSyncFix.DebugMode
     page = CustomSyncFix,
     translation = CustomSyncFix_DebugMode,
 }
+
+option CustomSyncFix.TeleportLogger
+{
+    type = boolean,
+    default = false,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_TeleportLogger,
+}
+
+option CustomSyncFix.TeleportThreshold
+{
+    type = double,
+    default = 1.5,
+    min = 0.5,
+    max = 10.0,
+    page = CustomSyncFix,
+    translation = CustomSyncFix_TeleportThreshold,
+}

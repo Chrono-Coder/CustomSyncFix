@@ -21,4 +21,10 @@ Sandbox_EN = {
 
     Sandbox_CustomSyncFix_DebugMode = "Debug Logging",
     Sandbox_CustomSyncFix_DebugMode_tooltip = "Print sync debug info to the console. Useful for troubleshooting, but generates a lot of log output.",
+
+    Sandbox_CustomSyncFix_TeleportLogger = "Teleport Logger (Server)",
+    Sandbox_CustomSyncFix_TeleportLogger_tooltip = "Logs [CSF-TP] entries to server-console.txt whenever a zombie or player moves faster than the threshold (likely a desync teleport). Server-side only; clients do not need this mod updated.",
+
+    Sandbox_CustomSyncFix_TeleportThreshold = "Teleport Threshold (tiles/tick)",
+    Sandbox_CustomSyncFix_TeleportThreshold_tooltip = "Movement faster than this is flagged as a teleport. 1.5 tiles per tick is ~90 tiles per second (around 200 mph) — safe upper bound for any normal motion.",
 }
