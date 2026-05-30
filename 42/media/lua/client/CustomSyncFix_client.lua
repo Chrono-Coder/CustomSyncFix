@@ -76,7 +76,10 @@ local function applyZombieSync(data)
 end
 
 local function applyPending()
-    if next(pending) == nil then return end
+    -- Avoid Kahlua's missing next() global; cheap empty-check via pairs
+    local hasAny = false
+    for _ in pairs(pending) do hasAny = true; break end
+    if not hasAny then return end
 
     local cell = getCell()
     if not cell then return end
